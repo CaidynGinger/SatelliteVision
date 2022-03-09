@@ -2,7 +2,7 @@
 import './navbar.components.css'
 
 import MenuIcon from '@mui/icons-material/Menu';
-import logo from './logo.png'
+import logo from '../../../recoreces/logo.png'
 import IconButton from '@mui/material/IconButton';
 
 export default function Navbar() {

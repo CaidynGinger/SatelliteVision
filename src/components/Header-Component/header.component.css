@@ -25,3 +25,12 @@ header{
     padding-top: 30px;
     box-sizing: border-box;
 }
+
+.logo-container-main{
+    width: 70%;
+    margin: auto;
+}
+
+.nav-li-link Link, .nav-li-link Link:visited {
+    list-style: none;
+}

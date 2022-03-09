@@ -6,8 +6,8 @@ import {
   Route, 
 } from 'react-router-dom';  // https://reactrouter.com/docs/en/v6/getting-started/tutorial#installation
 import Header from './components/Header-Component/header.component';
-import Expenses from './components/Main-App/Comparison-Component/Comparison-Component';
-import Invoices from './components/Main-App/Timeline-Component/Timeline.Component';
+import Timeline from './components/Main-App/Timeline-Component/timeline.component.js';
+import Comparison from './components/Main-App/Comparison-Component/comparison-component.js'
 import './index.css';
 
 const rootElement = document.getElementById('root')
@@ -16,8 +16,8 @@ ReactDOM.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<Header />}>
-        <Route path="/" element={<Expenses />} />
-        <Route path="data-visulisation" element={<Invoices />} />
+        <Route path="comparison" element={<Comparison />} />
+        <Route path="timeline" element={<Timeline />} />
       </Route>
     </Routes>
   </BrowserRouter>,
