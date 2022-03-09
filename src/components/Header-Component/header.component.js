@@ -1,8 +1,9 @@
-import './header.component.css';
 import logo from '../../recoreces/logo.png'
 import { Link, Outlet } from "react-router-dom";
 import Button from '@mui/material/Button';
 import Navbar from './navbar-component/navbar.component';
+import './header.component.css';
+
 
 export default function Header() {
   return (
@@ -14,14 +15,19 @@ export default function Header() {
         <h1>Saterlite Vision</h1>
         <nav>
           <ul>
-            <li className='nav-li-link'>
-              <Link to="/timeline">
-                <Button variant="text">Data Visulisation</Button>
+          <li className='nav-li-link'>
+              <Link to="/">
+                <Button className='side-nav-btn' size="large" variant="text">Dashboard</Button>
               </Link>
             </li>
-            <li>
+            <li className='nav-li-link'>
+              <Link to="/timeline">
+                <Button className='side-nav-btn' size="large" variant="text">Data Visulisation</Button>
+              </Link>
+            </li>
+            <li className='nav-li-link'>
               <Link to="/comparison">
-                <Button variant="text">Find Saterlite</Button>
+                <Button className='side-nav-btn' size="large" variant="text">Find Saterlite</Button>
               </Link>
             </li>
           </ul>

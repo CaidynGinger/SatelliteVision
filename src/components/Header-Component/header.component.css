@@ -31,6 +31,11 @@ header{
     margin: auto;
 }
 
-.nav-li-link Link, .nav-li-link Link:visited {
-    list-style: none;
+.nav-li-link{
+    float: left;
+    margin-left: 10px;
 }
+
+.side-nav-btn{
+    color: #5f27cd !important;
+} 
