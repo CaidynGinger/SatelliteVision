@@ -1,29 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { 
-  BrowserRouter,
-  Routes,
-  Route, 
-} from 'react-router-dom';  // https://reactrouter.com/docs/en/v6/getting-started/tutorial#installation
-import Header from './components/Header-Component/header.component';
-import Timeline from './components/Main-App/Timeline-Component/timeline.component.js';
-import Comparison from './components/Main-App/Comparison-Component/comparison-component.js'
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom";
 
-const rootElement = document.getElementById('root')
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "./index.css";
+import App from "./App";
+import GetTLEData from "./services/GetDateData";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Comparison from "./components/ComparisonPage/comparison";
+import DashBoard from "./components/body/DashBoard";
 
 ReactDOM.render(
-  <BrowserRouter>
+<BrowserRouter>
     <Routes>
-      <Route path="/" element={<Header />}>
-        <Route path="comparison" element={<Comparison />} />
-        <Route path="timeline" element={<Timeline />} />
+      <Route path="/" element={<App />}>
+        <Route path="/" element={<DashBoard />} />
+        <Route path="/comparison" element={<Comparison />} />
       </Route>
     </Routes>
-  </BrowserRouter>,
-  rootElement
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+  </BrowserRouter>
+  , document.getElementById("root"));
