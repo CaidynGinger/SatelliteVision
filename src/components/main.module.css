@@ -1,0 +1,34 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+}
+
+.main_item:nth-child(1) {
+  order: 0;
+  flex: 0 1 auto;
+  align-self: auto;
+  width: 350px;
+  height: 100vh;
+  background-color: #1a1f24;
+  box-shadow: 3px 0px 2px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+
+}
+
+.main_item:nth-child(2) {
+  order: 0;
+  flex: 0 1 auto;
+  align-self: auto;
+  width: 100%;
+}
+
+
+/* CSS HEX */
+/* --: #121526ff;
+--oxford-blue: #161B2Eff;
+--space-cadet: #3B3165ff;
+--heliotrope: #CD74EEff;
+--dark-turquoise: #2CD8DEff; */

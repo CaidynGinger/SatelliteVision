@@ -1,0 +1,14 @@
+.chart_container{
+    height: 95%;
+    width: 95%;
+    padding: 1rem;
+    margin: auto;
+}
+
+.chart_container svg{
+    fill: rgb(95, 34, 61);
+}
+
+.map{
+    stroke: rgb(34, 34, 34);
+}

@@ -1,0 +1,26 @@
+.satellite-item{
+    margin: 0;
+    margin-top: 5px;
+    --bs-gutter-x: 0;
+    --bs-gutter-y: 0;
+}
+
+.satellite-item div{
+    vertical-align: middle;
+}
+
+.satellite-item div p {
+    font-size: 14px;
+    padding: 5px;
+}
+
+.satellite-item div ion-icon{
+    padding: 5px;
+}
+
+.trash ion-icon:hover{
+   background-color: #b53471;
+   border-radius: 100px;
+   cursor: pointer;
+}
+

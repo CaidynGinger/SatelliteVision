@@ -1,0 +1,41 @@
+.satelliteItemListCard {
+  overflow: auto;
+  height: 310px;
+  width: 100%;
+  border-radius: 25px;
+  padding: 1rem;
+  margin-top: 30px;
+  background-color: #1a1f24;
+}
+
+.satelliteItemList::-webkit-scrollbar {
+  width: 4px;
+}
+
+.satelliteItemList::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.satelliteItemList::-webkit-scrollbar-thumb {
+  background: #b53471;
+  border-radius: 100px;
+}
+
+.satelliteItemList::-webkit-scrollbar-thumb:hover {
+  background: #581434;
+}
+
+.satelliteItemListCard hr {
+  margin: 10px 0 10px 0;
+}
+
+.satelliteItemListCard div,
+.satelliteItemListCard div ion-icon {
+  text-align: center;
+  padding: 0;
+}
+
+.satelliteItemListCard div p {
+  margin: 0;
+  font-size: 18px;
+}

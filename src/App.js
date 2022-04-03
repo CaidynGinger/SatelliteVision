@@ -1,25 +1,24 @@
 import React from "react";
 
-import "./App.css";
-import DashBoard from "./components/body/DashBoard";
-import SideNav from "./components/header/SideNav";
+import "./app.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import classes from "./App.css";
-import TopNav from "./components/header/TopNav";
-import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
-import Comparison from "./components/ComparisonPage/comparison";
+import Main from "./components/Main";
+import { DashBoard } from "./components/pages/Dashboard/DashBoard";
+import { Timeline } from "./components/pages/TimeLine/Timeline";
+import { Comparison } from "./components/pages/Comparison/Comparison";
 
 function App() {
   return (
-    <div className="flex-container">
-      <div className="side_nav flex-item">
-        <SideNav />
-      </div>
-      <div className="body flex-item">
-        <TopNav />
-        <Outlet />
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main />}>
+          <Route path="/" element={<DashBoard/>}/>
+          <Route path="compare" element={<Comparison/>}/>
+          <Route path="timeline" element={<Timeline/>}/>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

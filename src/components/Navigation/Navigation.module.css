@@ -1,0 +1,75 @@
+.side_nav h1{
+    text-align: center;
+    font-weight: 300;
+    text-decoration: underline;
+    font-size: 20px;
+    margin: 20px 0;
+    margin-top: 40px;
+    text-underline-offset: 4px;
+}
+
+.side_nav h2{
+    text-align: center;
+    font-size: 18px;
+    font-weight: 200;
+    margin: 10px 0;
+}
+
+.side_nav hr{
+    width: 90%;
+    height: 4px;
+    margin: 40px auto;
+    background-color: white;
+}
+
+.logo_icon{
+    text-align: center;
+}
+
+.logo_icon ion-icon{
+    font-size: 64px;
+}
+
+.navigation_list{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 40px;
+}
+
+.navigation_list li a{
+    display: block;
+    padding: 10px 0;
+    padding-left: 20px;
+    border-left: 4px solid transparent;
+    text-decoration: none;
+    color: white;
+}
+
+.navigation_list li a:hover{
+    background-color: #B53471;
+    cursor: pointer;
+    border-radius: 5px;
+    border-left: 4px solid white;
+}
+
+.navigation_list li a div{
+    vertical-align: middle;
+}
+
+.navigation_list li a div p,
+.navigation_list li a div ion-icon{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.navigation_list li a div ion-icon{
+    font-size: 24px;
+}
+
+.navigation_list li a div p{
+    margin: 0;
+    margin-left: 40px;
+    font-weight: 200;
+    font-size: 20px;
+}

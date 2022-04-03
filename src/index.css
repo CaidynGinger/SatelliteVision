@@ -1,15 +1,12 @@
-* {
-  box-sizing: border-box;
-  color: white;
-  padding: 0;
-  margin: 0;
+html, body{
+    background-color: rgb(17, 17, 17);
+    color: white;
 }
 
-html {
-  font-family: sans-serif;
-  background: #1f1f1f;
+h1,h2,h3,h4,h5,h6{
+font-family: 'Red Hat Mono', monospace;
 }
 
-body {
-  margin: 0;
+p, button{
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
 }

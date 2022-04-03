@@ -1,0 +1,36 @@
+.header_container{
+    width: 100%;
+    margin: 40px 0 0  0;
+}
+
+.header_container h1{
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.header_container h3{
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.card_container{
+    height: 50%;
+}
+
+.card_map{
+    background-color: #1a1f24;
+    border-radius: 25px;
+}
+
+.card{
+    background-color: #1a1f24;
+    border-radius: 25px;
+}
+
+/* .map_card{
+    height: 70%;
+}
+
+.small_bar_chart{
+    height: 30%;
+} */
