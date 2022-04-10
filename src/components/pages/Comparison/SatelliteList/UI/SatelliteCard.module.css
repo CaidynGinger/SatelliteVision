@@ -2,9 +2,11 @@
   width: 100%;
   aspect-ratio: 1/0.5;
   background-color: #1a1f24;
-  padding: 20px;
+  padding: 10px;
   cursor: pointer;
   transition: 0.3s;
+  margin: 0;
+  border-radius: 25px;
 }
 
 .card:hover {
@@ -12,38 +14,34 @@
   transform: scale(1.03);
 }
 
-.flex_container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-content: stretch;
-  align-items: flex-start;
-  align-items: center;
-  justify-content: center;
+.card div{
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.flex_container div:nth-child(1) {
-  order: 0;
-  flex: 0 1 auto;
-  align-self: auto;
-  width: 30%;
-  text-align: center;
-}
 
-.flex_container div:nth-child(2) {
-  order: 0;
-  flex: 0 1 auto;
-  align-self: auto;
-  width: 70%;
-}
-
-.flex_container div:nth-child(2) h3 {
+.card div h3{
   font-size: 20px;
+  margin: 0;
 }
 
-.flex_container div:nth-child(1) ion-icon {
+.card div p{
+  margin: 0;
+}
+
+.card div ion-icon{
   font-size: 40px;
-  padding: 20px;
+}
+
+.card .trash ion-icon{
+  font-size: 20px;
+  padding: 5px;
+}
+
+.card .trash ion-icon:hover{
+  background-color: #B53471;
+  border-radius: 100px;
 }

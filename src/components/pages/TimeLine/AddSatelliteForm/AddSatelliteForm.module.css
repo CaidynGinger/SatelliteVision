@@ -76,7 +76,7 @@
 
 /* active state */
 .group input:focus ~ label,
-input:valid ~ label {
+.group input:valid ~ label {
   top: -20px;
   font-size: 14px;
   color: #b53471;

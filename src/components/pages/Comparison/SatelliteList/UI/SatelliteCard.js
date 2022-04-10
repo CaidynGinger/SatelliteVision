@@ -1,43 +1,27 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { Col } from "react-bootstrap";
+import React from "react";
+import { Col, Row } from "react-bootstrap";
 
 import classes from "./SatelliteCard.module.css";
 
-export const SatelliteCard = (props) => {
+import img from "./Resources/Sat 2.svg";
 
-  const [data, setData] = useState([]) 
-
-  useEffect(() => {
-    axios
-      .get("https://tle.ivanstanojevic.me/api/tle/"+ props.id +"/propagate")
-      .then((res) => {
-        console.log('got satellite')
-        console.log(res.data)
-        setData(res.data)
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  },[props.id]);
-
-  props.satelliteDataHandler(data) 
-
-
-
+export const SatelliteCard = ({ name, id, onRemoveSatellite }) => {
   return (
     <Col md={3}>
-      <div className={classes.card}>
-        <div className={classes.flex_container}>
-        <div>
-          <ion-icon className={classes.selectedSatellite} src={props.image}></ion-icon>
+      <Row className={classes.card}>
+        <Col lg={3}>
+          <ion-icon src={img}></ion-icon>
+        </Col>
+        <Col lg={6}>
+          <h3>{name}</h3>
+          <p>Satellite Id: {id}</p>
+        </Col>
+        <Col className={classes.trash} lg={3}>
+          <div onClick={onRemoveSatellite}>
+            <ion-icon name="trash-outline"></ion-icon>
           </div>
-          <div>
-            <h3>Satellite name: {props.name}</h3>
-            <p>satellite id: {props.id}</p>
-          </div>
-        </div>
-      </div>
+        </Col>
+      </Row>
     </Col>
-  )
-}
+  );
+};

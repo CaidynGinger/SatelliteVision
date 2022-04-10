@@ -1,0 +1,8 @@
+.chart_card{
+    width: 100%;
+    background-color: #1a1f24;
+    height: calc(100% - 30px);
+    margin-top: 30px;
+    padding: 1rem;
+    border-radius: 25px;
+}

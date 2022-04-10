@@ -10,3 +10,7 @@ font-family: 'Red Hat Mono', monospace;
 p, button{
     font-family: 'IBM Plex Sans Arabic', sans-serif;
 }
+
+a{
+    color: white;
+}

@@ -7,8 +7,8 @@ import classes from "./main.module.css";
 
 import { SideDrawer } from "./Navigation/SideDrawer";
 
-const Main = () => {
-  const [satelliteData, setSatelliteData] = useState([0]);
+const Main = ({username}) => {
+  const [satelliteData, setSatelliteData] = useState([]);
 
   const [dataReceived, setDataReceived] = useState(true);
 
@@ -17,7 +17,6 @@ const Main = () => {
       .get("https://tle.ivanstanojevic.me/api/tle?page-size=100")
       .then((res) => {
         setSatelliteData(res.data.member);
-        console.log(res.data.member);
         setDataReceived(false);
       })
       .catch((err) => {
@@ -26,11 +25,9 @@ const Main = () => {
   }, []);
 
   return (
-    <div className={classes.main}>
-      <div className={classes.main_item}>
-        <SideDrawer />
-      </div>
-      <div className={classes.main_item}>
+    <div >
+      <SideDrawer username={username}/>
+      <div className={classes.main}>
         {dataReceived ? <LoadingScreen /> : <Outlet context={satelliteData} />}
       </div>
     </div>

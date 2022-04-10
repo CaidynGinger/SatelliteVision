@@ -17,7 +17,6 @@ export const AddSatelliteForm = ({names, onClick, onAddSatellite}) => {
     }, [inputValue,names]);
 
   function showDropDownList() {
-    console.log("clicked");
     if (showHideDropDownList === true) {
       setShowHideDropDownList(false);
     } else {

@@ -7,7 +7,6 @@ import "./SatelliteListTimeLine.css";
 import { SatelliteItem } from "./UI/SatelliteItem";
 
 export const SatelliteListTimeLine = ({ satelliteList, onRemoveSatellite }) => {
-
   return (
     <div className="satelliteItemListCard">
       <Row>
@@ -24,8 +23,14 @@ export const SatelliteListTimeLine = ({ satelliteList, onRemoveSatellite }) => {
       </Row>
       <hr />
       <div className="satelliteItemList">
-        {satelliteList.map((item,index) => {
-          return <SatelliteItem key={index} onRemoveSatellite={onRemoveSatellite} details={item} />;
+        {satelliteList.map((item, index) => {
+          return (
+            <SatelliteItem
+              key={index}
+              onRemoveSatellite={onRemoveSatellite}
+              details={item}
+            />
+          );
         })}
       </div>
     </div>

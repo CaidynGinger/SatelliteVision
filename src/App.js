@@ -1,25 +1,15 @@
-import React from "react";
-
-import "./app.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-
+import { useAuth0 } from "@auth0/auth0-react";
+import React, { useState } from "react";
+import LoginForm from "./components/LoginForm/LoginForm";
 import Main from "./components/Main";
-import { DashBoard } from "./components/pages/Dashboard/DashBoard";
-import { Timeline } from "./components/pages/TimeLine/Timeline";
-import { Comparison } from "./components/pages/Comparison/Comparison";
 
-function App() {
+const App = () => {
+  const { user, isAuthenticated } = useAuth0();
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Main />}>
-          <Route path="/" element={<DashBoard/>}/>
-          <Route path="compare" element={<Comparison/>}/>
-          <Route path="timeline" element={<Timeline/>}/>
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <div>
+      {isAuthenticated ?  <Main username={user.name}/> : <LoginForm />}
+    </div>
   );
-}
+};
 
 export default App;

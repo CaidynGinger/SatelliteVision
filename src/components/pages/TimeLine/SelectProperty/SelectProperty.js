@@ -1,39 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./SelectProperty.css";
+import { FormControlLable } from "./UI/FormControlLable/FormControlLable";
 
-export const SelectProperty = () => {
+export const SelectProperty = ({selected, setSelected}) => {
+
+  const isButtonSelected = (value) => {
+    if (selected === value) {
+      return true;
+    }
+  };
+
+  const handleChange = (e) => {
+    setSelected(e.target.value);
+    // onChange(e); // this fires the onChange handler (handleRadio) you passed in SearchItem
+  };
   return (
     <div className="selectPropertyCard ">
-      <span className="title">CSS Material Design radio button</span>
-
-      <div className="radio">
-        <input
-          type="radio"
-          name="radio"
-          id="radio1"
-          className="radio__input"
-          defaultChecked
-        />
-        <label htmlFor="radio1" className="radio__label">
-          Radio 1
-        </label>
-      </div>
+      <span className="title">Select Property to be seen over time</span>
+      <FormControlLable
+        id={"altitude"}
+        label={"Satellite Altitude"}
+        onChange={handleChange}
+        checked={isButtonSelected("altitude")}
+      />
       <br />
-      <div className="radio">
-        <input type="radio" name="radio" id="radio2" className="radio__input" />
-        <label htmlFor="radio2" className="radio__label">
-          Radio 2
-        </label>
-      </div>
+      <FormControlLable
+        id={"velocity"}
+        label={"Satellite velocity"}
+        checked={isButtonSelected("velocity")}
+        onChange={handleChange}
+      />
       <br />
-      <div className="radio">
-        <input type="radio" name="radio" id="radio3" className="radio__input" />
-        <label htmlFor="radio3" className="radio__label">
-          Radio 3
-        </label>
-      </div>
-      <br></br>
+      <FormControlLable
+        id={"latitude"}
+        label={"Satellite latitude"}
+        checked={isButtonSelected("latitude")}
+        onChange={handleChange}
+      />
+      <br />
+      <FormControlLable
+        id={"longitude"}
+        label={"Satellite Longitude"}
+        checked={isButtonSelected("longitude")}
+        onChange={handleChange}
+      />
+      <br />
     </div>
   );
 };

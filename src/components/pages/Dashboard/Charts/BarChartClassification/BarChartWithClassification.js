@@ -100,7 +100,6 @@ export const BarChartWithClassification = ({ data }) => {
             tooltip: {
               callbacks: {
                 label: function (ctx) {
-                  // console.log(ctx);
                   let label = ctx.dataset.labels[ctx.dataIndex];
                   label +=
                     " | Revelations Per Day " +

@@ -1,16 +1,13 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { Container, Row } from "react-bootstrap";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Row } from "react-bootstrap";
 import { useOutletContext } from "react-router-dom";
-import { BarChartVelocity } from "./Charts/BarChartVelocity/BarChartVelocity";
+import { ContainerCard } from "../../UI/ContainerCard/ContainerCard";
+import { PageHeader } from "../../UI/PageHeader/PageHeader";
+import { AddSatelliteForm } from "../TimeLine/AddSatelliteForm/AddSatelliteForm";
+import { PreChartData } from "./Charts/PreChartData";
 
-import classes from "./Comparison.module.css";
-import { AddSatelliteForm } from "./SatelliteList/AddSatelliteForm/AddSatelliteForm";
 import { SatelliteList } from "./SatelliteList/SatelliteList";
-
-import SatelliteSvg1 from "./SatelliteList/UI/Resources/Sat 1.svg";
-import SatelliteSvg2 from "./SatelliteList/UI/Resources/Sat 2.svg";
-import SatelliteSvg3 from "./SatelliteList/UI/Resources/Sat 3.svg";
-import SatelliteSvg4 from "./SatelliteList/UI/Resources/Sat 4.svg";
 
 export const Comparison = () => {
   const [showHideSatelliteForm, setShowHideSatelliteForm] = useState(false);
@@ -22,57 +19,94 @@ export const Comparison = () => {
     }
   };
 
-  const data = useOutletContext();
-  let satelliteNamesList = [];
+  const [satelliteList, setSatelliteList] = useState([]);
 
-  data.forEach((element) => {
-    satelliteNamesList.push({
-      name: element.name,
-      id: element.satelliteId,
-    });
+  const data = useOutletContext();
+
+  const satelliteNamesAndId = data.map((item) => {
+    return {
+      name: item.name,
+      id: item.satelliteId,
+      color: "#" + Math.floor(Math.random() * 16777215).toString(16),
+    };
   });
-  const [selectedSatelliteList, setSelectedSatelliteList] = useState([]);
-  const addSatelliteHandler = (satellite) => {
-    selectedSatelliteList.push(satellite);
-    setSelectedSatelliteList(selectedSatelliteList);
-    setShowHideSatelliteForm(false);
+
+  
+
+  const ClearAllSatellites = () => {
+    setSatelliteList([]);
+    setSatelliteDataList([]);
   };
 
-  const clearSatellitesHandler = () => {
-    setSelectedSatelliteList([]);
-    console.log(selectedSatelliteList)
-  }
+  const [satelliteDataList, setSatelliteDataList] = useState([]);
+
+  useEffect(() => {
+    satelliteList.forEach((element) => {
+      let satelliteId = element.id;
+      let urlCall =
+        "https://tle.ivanstanojevic.me/api/tle/" + satelliteId + "/propagate";
+      if (satelliteDataList.find((i) => satelliteId === i.tle?.satelliteId)) {
+        console.log('found')
+      } else {
+        axios
+          .get(urlCall)
+          .then((res) => {
+            setSatelliteDataList((currentArray) => [...currentArray, res.data]);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    });
+  }, [satelliteList, satelliteDataList]);
+
+  const onAddSatelliteHandler = (data) => {
+    setSatelliteList((satelliteList) => [...satelliteList, data]);
+  };
+
+  const useRemoveSatelliteHandler = (event) => {
+    var index = satelliteList.indexOf(event);
+    let newSatelliteList = [...satelliteList];
+    let newSatelliteDataList = [...satelliteDataList];
+    newSatelliteList.splice(index, 1);
+    newSatelliteDataList.splice(index, 1);
+    setSatelliteList(newSatelliteList);
+    setSatelliteDataList(newSatelliteDataList);
+  };
+
+  console.log(satelliteDataList);
+  console.log(satelliteList);
 
   return (
-    <div>
+    <ContainerCard>
       {showHideSatelliteForm ? (
         <AddSatelliteForm
-          satelliteNamesList={satelliteNamesList}
-          showHideForm={showHideForm}
-          setSelectedSatellite={addSatelliteHandler}
+          onClick={showHideForm}
+          onAddSatellite={onAddSatelliteHandler}
+          names={satelliteNamesAndId}
         />
       ) : null}
-      <Container className={classes.container}>
-        <Row>
-          <div className={classes.header_container}>
-            <div>
-              <h1>Compare Satellites</h1>
-              <h3>
-                add satellites to the list and compare them to more added
-                satellites
-              </h3>
-            </div>
-            <div>
-              <button onClick={clearSatellitesHandler}>Clear Satellites</button>
-            </div>
-          </div>
-        </Row>
-        <SatelliteList
-          satelliteList={selectedSatelliteList}
-          showHideForm={showHideForm}
+      <PageHeader
+        pageDetail={{
+          header: "Compare upto 4 satellites and see how they are different",
+          subHeading: "add satellites to get started",
+          buttonTitle: "Clear Satellites",
+          onClick: ClearAllSatellites,
+        }}
+      />
+      <br></br>
+      <SatelliteList
+        satelliteList={satelliteList}
+        onClick={showHideForm}
+        onRemoveSatellite={useRemoveSatelliteHandler}
+      />
+      <br />
+      <Row>
+        <PreChartData
+          satelliteList={satelliteList}
+          satelliteDataList={satelliteDataList}
         />
-        {/* <BarChartVelocity /> */}
-      </Container>
-    </div>
+      </Row>
+    </ContainerCard>
   );
 };

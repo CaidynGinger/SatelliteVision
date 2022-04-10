@@ -2,6 +2,8 @@ import React from "react";
 import { NavigationLinkButton } from "./UI/NavigationLinkButton";
 
 import classes from "./Navigation.module.css";
+import { Button } from "../UI/Button/Button";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const linksList = [
   {
@@ -24,15 +26,22 @@ const linksList = [
   },
 ];
 
-export const SideDrawer = () => {
+export const SideDrawer = ({username}) => {
+  const { logout } = useAuth0();
   return (
     <div className={classes.side_nav}>
       <h1>Satellite Vision</h1>
+      <h3>Hello {username}</h3>
       <div className={classes.logo_icon}>
         <ion-icon name="rocket-outline"></ion-icon>
       </div>
       <h2>find out all about Satellites</h2>
-      <hr/>
+      <hr />
+      {/* <div>
+        <h2>user name</h2>
+        <ion-icon name="person-outline"></ion-icon>
+      </div>
+      <hr/> */}
       <nav>
         <ul className={classes.navigation_list}>
           {linksList.map((item) => {
@@ -46,6 +55,12 @@ export const SideDrawer = () => {
             );
           })}
         </ul>
+        <div className={classes.logoutBtn_container}>
+          <Button
+            buttonTitle={"Log Out"}
+            onClick={() => logout({ returnTo: window.location.origin })}
+          />
+        </div>
       </nav>
     </div>
   );
