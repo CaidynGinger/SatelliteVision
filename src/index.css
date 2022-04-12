@@ -11,6 +11,10 @@ p, button{
     font-family: 'IBM Plex Sans Arabic', sans-serif;
 }
 
-a{
+a {
     color: white;
+}
+
+a:hover{
+    color: #b53471;
 }

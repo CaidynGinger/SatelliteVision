@@ -29,10 +29,17 @@ export const BarChartWithClassification = ({ data }) => {
 
   let dataList = data.map((item) => {
     return {
-      x: parseFloat(item.line2.slice(63, 68)),
-      y: parseFloat(item.line2.slice(52, 63)),
+      x:
+        Math.round(
+          (parseFloat(item.line2.slice(63, 68)) + Number.EPSILON) * 100
+        ) / 100,
+      y:
+        Math.round(
+          (parseFloat(item.line2.slice(52, 63)) + Number.EPSILON) * 100
+        ) / 100,
     };
   });
+
   //making datalist
 
   // colors
@@ -83,8 +90,7 @@ export const BarChartWithClassification = ({ data }) => {
   return (
     <div className={classes.chart_container}>
       <Scatter
-        options={{  
-                    
+        options={{
           plugins: {
             legend: {
               display: false, //https://www.codegrepper.com/code-examples/javascript/chartjs+hide+labels
@@ -92,7 +98,7 @@ export const BarChartWithClassification = ({ data }) => {
             title: {
               color: "white",
               display: true,
-              text: ["Satellites Launched Each Year"],
+              text: ["Satellites Revolutions per day over Total Revolutions"],
             },
             labels: {
               display: true,
@@ -102,10 +108,10 @@ export const BarChartWithClassification = ({ data }) => {
                 label: function (ctx) {
                   let label = ctx.dataset.labels[ctx.dataIndex];
                   label +=
-                    " | Revelations Per Day " +
-                    ctx.parsed.x +
-                    " | Total Revelations " +
+                    " | Revolutions Per Day " +
                     ctx.parsed.y +
+                    " | Total Revolutions " +
+                    ctx.parsed.x +
                     "|";
                   return label;
                 },
@@ -119,13 +125,12 @@ export const BarChartWithClassification = ({ data }) => {
               // suggestedMax: 2000,
               title: {
                 display: true, //https://www.chartjs.org/docs/3.0.2/axes/labelling.html
-                text: "Total Revelations",
-                color: 'white'
+                text: "Revolutions per day",
+                color: "white",
               },
               ticks: {
                 color: "white",
               },
-              
             },
             x: {
               // battles
@@ -133,7 +138,7 @@ export const BarChartWithClassification = ({ data }) => {
               // suggestedMax: 20000,
               title: {
                 display: true,
-                text: "Revelations Per Day",
+                text: "Total Revolutions",
                 color: "white",
               },
               ticks: {

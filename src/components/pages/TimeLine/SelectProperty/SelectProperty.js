@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import "./SelectProperty.css";
 import { FormControlLable } from "./UI/FormControlLable/FormControlLable";
@@ -27,14 +27,14 @@ export const SelectProperty = ({selected, setSelected}) => {
       <br />
       <FormControlLable
         id={"velocity"}
-        label={"Satellite velocity"}
+        label={"Satellite Velocity"}
         checked={isButtonSelected("velocity")}
         onChange={handleChange}
       />
       <br />
       <FormControlLable
         id={"latitude"}
-        label={"Satellite latitude"}
+        label={"Satellite Latitude"}
         checked={isButtonSelected("latitude")}
         onChange={handleChange}
       />

@@ -19,10 +19,11 @@ ChartJS.register(
   Legend
 );
 
-export const VelocityChart = ({ satelliteList, satelliteDataList }) => {
-  console.log(satelliteList);
-  console.log(satelliteDataList);
-
+export const ChartToRender = ({
+  satelliteList,
+  satelliteDataList,
+  chartToRender,
+}) => {
   const [datasets, setDatasets] = useState([]);
 
   useEffect(() => {
@@ -33,23 +34,44 @@ export const VelocityChart = ({ satelliteList, satelliteDataList }) => {
         let satelliteColor = satelliteList.find(
           (i) => i.id === element.tle?.satelliteId
         );
-        let dataset = {
+        let dataset = {};
+        let dataChangeValueForChart = [];
+        if (chartToRender === "velocity") {
+          dataChangeValueForChart.push(element.vector.velocity.r);
+        } else if (chartToRender === "altitude") {
+          dataChangeValueForChart.push(element.geodetic.altitude);
+        } else if (chartToRender === "total Revolutions") {
+          dataChangeValueForChart.push(
+            Math.round(
+              (parseFloat(element.tle.line2.slice(63, 68)) + Number.EPSILON) *
+                100
+            ) / 100
+          );
+        } else if (chartToRender === "Revolutions per/day") {
+          dataChangeValueForChart.push(
+            Math.round(
+              (parseFloat(element.tle.line2.slice(52, 63)) + Number.EPSILON) *
+                100
+            ) / 100
+          );
+        }
+        dataset = {
           label: element.tle.name,
-          data: [element.vector.velocity.r],
+          data: dataChangeValueForChart,
           backgroundColor: [satelliteColor.color],
           borderColor: [satelliteColor.color],
           hoverBackgroundColor: "white", //https://www.codegrepper.com/code-examples/javascript/chartjs+bar+chart+hover+color
         };
-        datasetUseEffectVar.push(dataset)
+        datasetUseEffectVar.push(dataset);
       });
     }
-
     setDatasets(datasetUseEffectVar);
-  }, [satelliteDataList, satelliteList]);
+  }, [satelliteDataList, satelliteList, chartToRender]);
   return (
     <div>
       <Bar
         options={{
+          indexAxis: "y",
           responsive: true,
           scales: {
             x: {
@@ -67,22 +89,14 @@ export const VelocityChart = ({ satelliteList, satelliteDataList }) => {
             title: {
               color: "white",
               display: true,
-              text: ["Satellites Launched Each Year"],
             },
             legend: {
               display: true,
             },
           },
-          tooltips: {
-            callbacks: {
-              // label: function (tooltipItem) {
-              //   return tooltipItem + ': awdaw';
-              // },
-            },
-          },
         }}
         data={{
-          labels: ["velocity km per second"],
+          labels: [""],
           datasets: datasets,
         }}
       />

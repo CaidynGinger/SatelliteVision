@@ -42,7 +42,7 @@ export const options = {
     title: {
       color: "white",
       display: true,
-      text: ["Satellites Launched Each Year"],
+      text: ["Satellite's data over the past 10 Months"],
     },
     legend: {
       position: "bottom",
@@ -110,8 +110,6 @@ export const TimeLineGraph = ({
   }, [satelliteList, chartDataList, selected]);
 
   console.log(datasets);
-
-  useEffect(() => {}, [datasets, selected]);
 
   const data = {
     labels: chartLabelsList,

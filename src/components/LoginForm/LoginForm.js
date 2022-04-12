@@ -13,7 +13,7 @@ const LoginForm = () => {
         <div className={classes.content}>
           <h1>Satellite Vision</h1>
           <h4>
-            Here you will find out about 100 of the most popular satelites
+            Here you will find out about 100 of the most popular satellites
           </h4>
           <p>but first you will need to login or creat an account</p>
           <Button buttonTitle={"Log In"} onClick={() => loginWithRedirect()} />

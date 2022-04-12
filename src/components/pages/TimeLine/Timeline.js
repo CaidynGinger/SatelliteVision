@@ -53,13 +53,12 @@ export const Timeline = () => {
   }, []);
 
   useEffect(() => {
-    const now = new Date()
+    const now = new Date();
     satelliteList.forEach((element) => {
       let satelliteId = element.id;
       let dateList10Months = [];
       for (let index = 0; index < 10; index++) {
-
-        // bad code 
+        // bad code
 
         // const todaysDate = new Date(yyyy-mm-ddThh:mm:ss+00:00);
         // todaysDate.setMonth(todaysDate.getMonth() - index);
