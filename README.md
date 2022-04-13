@@ -71,7 +71,7 @@ A nice introduction to this amazing project of mine.
 * [Charts js 2](https://react-chartjs-2.js.org/)
 * [Simple React Maps](https://www.react-simple-maps.io/)
 * [TLE API](https://tle.ivanstanojevic.me/#/)
-* [Satelite js](https://github.com/shashwatak/satellite-js)
+* [Satellite js](https://github.com/shashwatak/satellite-js)
 * [React Bootstrap](https://react-bootstrap.github.io/)
 * [Auth0](https://auth0.com/)
 
@@ -91,7 +91,7 @@ Ensure that you have the latest version of [NPM](https://www.npmjs.com/) install
 Here are a couple of ways to clone this repo:
 
 1. GitHub Desktop </br>
-Enter `https://github.com/MikeMaynard14/termoneexample.git` into the URL field and press the `Clone` button.
+Enter `https://github.com/CaidynGinger/SatelliteVision.git` into the URL field and press the `Clone` button.
 
 2. Clone Repository </br>
 Run the following in the command-line to clone the project:
@@ -116,7 +116,7 @@ Run the following in the command-line to install all the required dependencies:
 <!-- note how you can use your gitHub link. Just make a path to your assets folder -->
 ![image2](https://github.com/CaidynGinger/SatelliteVision/blob/main/ImagesForReadMe/Dashboard_Page.png)
 
-### The top 100 most populare satelites
+### The top 100 most popular satellites
 
 using the TLE api we have collected the top 100 satellites to be explored and see the data associated to each satellite!
 
@@ -124,25 +124,21 @@ using the TLE api we have collected the top 100 satellites to be explored and se
 ### Feature 1
 
 The dashboard contains charts and maps the 
-- The first chart shows the satelites lanched each year
-- The second chart shows the satelites revulutions per day over the satellites revulutions
+- The first chart shows the satellites launched each year
+- The second chart shows the satellites revaluations per day over the satellites revolutions total
 - The map shows the locations of 20 satellites 
 
 ![image4](https://github.com/CaidynGinger/SatelliteVision/blob/main/ImagesForReadMe/Dashboard_Page.png)
 ### Feature 2
 
-The Comparison page contains a staelite list where you can add upto 4 satellites and view theire respective data sets in relation to one another
+The Comparison page contains a satellite list where you can add up to 4 satellites and view their respective data sets in relation to one another
 
 ![image5](https://github.com/CaidynGinger/SatelliteVision/blob/main/ImagesForReadMe/comparison_page.png)
 ### Feature 3
 
-The Timeline page contains a staelite list where you can any amount of satellites and view theire respective data sets in relation to one another
+The Timeline page contains a satellite list where you can any amount of satellites and view their respective data sets in relation to one another
 
 ![image5](https://github.com/CaidynGinger/SatelliteVision/blob/main/ImagesForReadMe/Timeline_page.png)
-
-<!-- CONCEPT PROCESS -->
-<!-- Briefly explain your concept ideation process -->
-<!-- here you will add things like wireframing, data structure planning, anything that shows your process. You need to include images-->
 
 <!-- DEVELOPMENT PROCESS -->
 ## Development Process
@@ -165,7 +161,7 @@ The `Development Process` is the technical implementations and functionality don
 
 #### Challenges
 <!-- stipulated the challenges you faced with the project and why you think you faced it or how you think you'll solve it (if not solved) -->
-* understanding how data is passed from one componetn to the next and how pointers to functios work
+* understanding how data is passed from one component to the next and how pointers to functions work
 
 
 #### Above And Beyond
@@ -177,7 +173,7 @@ What aspects of this final build contribute to the `Above And Beyond` Component 
 ### Future Implementation
 <!-- stipulate functionality and improvements that can be implemented in the future. -->
 
-* turn the satelite locations map into a live and constently updating ui element.
+* turn the satellite locations map into a live and constantly updating ui element.
 
 <!-- MOCKUPS -->
 ## Final Outcome
