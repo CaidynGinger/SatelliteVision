@@ -24,27 +24,27 @@ export const DashBoard = () => {
       />
       <Row>
         <Col className={classes.half_colum} md={6}>
-          <br/>
+          <br />
           <Col className={classes.card_container} md={12}>
             <ContentCard>
               <BarChart data={data} />
             </ContentCard>
           </Col>
           <Col className={classes.card_container} md={12}>
-          <br/>
+            <br />
 
-          <ContentCard>
+            <ContentCard>
               <BarChartWithClassification data={data} />
-              </ContentCard>
+            </ContentCard>
           </Col>
         </Col>
         <Col className={classes.half_colum} md={6}>
-        <br/>
+          <br />
 
           <Col className={classes.card_container} md={12}>
-          <ContentCard>
+            <ContentCard>
               <SatelliteVisualization data={data} />
-              </ContentCard>
+            </ContentCard>
           </Col>
         </Col>
       </Row>

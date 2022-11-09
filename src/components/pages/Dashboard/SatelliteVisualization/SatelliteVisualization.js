@@ -19,9 +19,9 @@ ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 export const SatelliteVisualization = ({ data }) => {
   var satellite = require("satellite.js");
 
-  console.log(data);
+  // console.log(data);
 
-  data = data.slice(0,20)
+  data = data.slice(0, 20);
 
   // making labels
 
@@ -37,15 +37,24 @@ export const SatelliteVisualization = ({ data }) => {
     return "#" + Math.floor(Math.random() * 16777215).toString(16);
   });
 
-  const markersList = data.map((item) => {
-     let satrec = satellite.twoline2satrec(
-      item.line1,
-      item.line2
-    );
+  const markersList = data.map((item, index) => {
+    let satrec = satellite.twoline2satrec(item.line1, item.line2);
 
     let date = new Date();
+
     let positionAndVelocity = satellite.propagate(satrec, date);
+    if (positionAndVelocity?.position?.x === undefined ) {
+      positionAndVelocity = {
+        position: {
+          x: 0,
+          y: 0,
+          z: 0,
+        },
+      };
+    }
     let gmst = satellite.gstime(date);
+    console.log(positionAndVelocity.position);
+    console.log(index);
     let position = satellite.eciToGeodetic(positionAndVelocity.position, gmst);
 
     return {
@@ -56,10 +65,10 @@ export const SatelliteVisualization = ({ data }) => {
     // { markerOffset: -15, name: "La Paz", coordinates: [-68.1193, -16.4897] }
   });
 
-  console.log(markersList)
+  console.log(markersList);
 
   const geoUrl =
-    "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
+    "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
   return (
     <div className={classes.chart_container}>
       <h6>Locations of 20 Satellites</h6>
